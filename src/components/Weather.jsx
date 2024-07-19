@@ -39,12 +39,12 @@ const Weather = () => {
 	};
 
 	const search = async (city) => {
-		setCity(city)
 		if (city === "") {
 			alert("Enter city name");
 			return;
 		}
 		try {
+			setCity(city)
 			// const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
 			const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${
 				import.meta.env.VITE_APP_ID
