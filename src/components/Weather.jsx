@@ -17,7 +17,7 @@ const Weather = () => {
 	const [weatherData, setWeatherData] = useState(false);
 	const [forecastData, setForecastData] = useState([]);
 	const [unit, setUnit] = useState("metric");
-
+	const [city, setCity] = useState("Lahore");
 
 	const allIcons = {
 		"01d": clear_icon,
@@ -39,6 +39,7 @@ const Weather = () => {
 	};
 
 	const search = async (city) => {
+		setCity(city)
 		if (city === "") {
 			alert("Enter city name");
 			return;
@@ -76,23 +77,23 @@ const Weather = () => {
 		} catch (error) {
 			console.error(error);
 		}
-  };
-  const sunriseTimestamp = weatherData.sunrise // Example timestamp
+	};
+	const sunriseTimestamp = weatherData.sunrise; // Example timestamp
 	const sunriseDate = new Date(sunriseTimestamp * 1000);
 	const formattedSunriseTime = sunriseDate.toLocaleString("en-US", {
 		hour: "numeric",
 		minute: "numeric",
 		hour12: true,
-  });
-  const sunsetTimestamp = weatherData.sunset // Example timestamp
+	});
+	const sunsetTimestamp = weatherData.sunset; // Example timestamp
 	const sunsetDate = new Date(sunsetTimestamp * 1000);
 	const formattedSunsetTime = sunsetDate.toLocaleString("en-US", {
 		hour: "numeric",
 		minute: "numeric",
 		hour12: true,
-  });
+	});
 	useEffect(() => {
-		search("Lahore");
+		search(city);
 	}, [unit]);
 
 	return (
@@ -112,7 +113,7 @@ const Weather = () => {
 					<img src={weatherData.icon} alt="" className="weather_icon" />
 					<div className="flex">
 						<span className="temp-unit" onClick={() => setUnit("imperial")}>
-							Farenheit
+							Fahrenheit
 						</span>
 						<span className="temp-unit" onClick={() => setUnit("metric")}>
 							Celcius
@@ -144,18 +145,14 @@ const Weather = () => {
 						<div className="col">
 							<img src={sunrise} alt="" />
 							<div className="">
-								<p>
-									{formattedSunriseTime}
-								</p>
+								<p>{formattedSunriseTime}</p>
 								<span>Sun rise</span>
 							</div>
 						</div>
 						<div className="col">
 							<img src={sunset} alt="" />
 							<div className="">
-								<p>
-									{formattedSunsetTime}
-								</p>
+								<p>{formattedSunsetTime}</p>
 								<span>Sun set</span>
 							</div>
 						</div>
