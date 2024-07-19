@@ -45,7 +45,6 @@ const Weather = () => {
 		}
 		try {
 			setCity(city)
-			// const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
 			const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${
 				import.meta.env.VITE_APP_ID
 			}`;
@@ -58,9 +57,7 @@ const Weather = () => {
 			]);
 
 			const currentWeatherData = await currentWeatherResponse.json();
-			// console.log(currentWeatherData.weather[0].description);
 			const forecastData = await forecastResponse.json();
-			console.log(currentWeatherData);
 			const icon = allIcons[currentWeatherData.weather[0].icon] || clear_icon;
 			setWeatherData({
 				humidity: currentWeatherData.main.humidity,
