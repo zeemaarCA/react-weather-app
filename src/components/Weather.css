@@ -122,3 +122,13 @@ cursor: pointer;
 .forecast_icon{
   width: 50px;
 }
+
+/* General media query for all mobile phones */
+@media only screen and (max-width: 768px) {
+  .weather-data{
+    width: 100%;
+  }
+  .forecast-item{
+    min-width: 45%;
+  }
+}
